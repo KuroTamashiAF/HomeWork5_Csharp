@@ -1,47 +1,42 @@
 ﻿// Написать программу масштабирования фигуры
-void FillSquare(int[,] sq)
+void Fillarray(int[,] arr)
 {
-    for (int i = 0; i < sq.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)                               
     {
-        for (int j = 0; j < sq.GetLength(1); j++)
-        {
-            sq[i, j] = 0;
-        }
+        Console.Write($"Enter to coordinates X vertices number {i + 1} ");
+        arr[i, 0] = Convert.ToInt32(Console.ReadLine());
+        Console.Write($"Enter to coordinates Y vertices number {i + 1} ");
+        arr[i, 1] = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
     }
 }
-void PrintSquare(int[,] sq)
+void Printarray(int[,] arr)
 {
-    for (int i = 0; i < sq.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < sq.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            Console.Write(sq[i, j] + " ");
+            Console.Write(arr[i, j] + " ");
         }
         Console.WriteLine();
     }
 }
-void SpecifyingFigure(int [,]sq)
+void Scaling(int[,] arr, int ScalCoof)
 {
-    for (int i = 1; i < sq.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 1; j < sq.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (sq[i+1,j+1]==0)
-            {
-                sq[i,j] = 5;
-            }
+            arr[i, j] *= ScalCoof;
         }
     }
 }
-
-
-
-
-
-
-
-int[,] square = new int[10, 10];
-FillSquare(square);
-PrintSquare(square);
-SpecifyingFigure(square);
-PrintSquare(square);
+Console.Write("Enter number of vertices: ");
+int NumberVertices = Convert.ToInt32(Console.ReadLine());
+int[,] array = new int[NumberVertices, 2];
+Fillarray(array);
+Printarray(array);
+Console.Write("Enter Scaling Cooficeint ");
+int ScalingCooficeint = Convert.ToInt32(Console.ReadLine());
+Scaling(array, ScalingCooficeint);
+Printarray(array);
